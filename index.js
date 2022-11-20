@@ -55,7 +55,11 @@ function roleOption(answers)  {
 
 inquirer
     .prompt(questions)
-    .then(() => {
-        roleOption()
+    .then
+    // .then(() => {
+    //     roleOption()
+    // })
+    fs.writeFile('index.html', data, (err) => {
+        if (err) return console.log(err);
     })
 
