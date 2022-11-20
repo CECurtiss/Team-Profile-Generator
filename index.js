@@ -6,8 +6,7 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-function teamQuestions() {
-    const questions = [
+ const questions = [
         {
             type: 'input',
             name: 'name',
@@ -29,25 +28,34 @@ function teamQuestions() {
             message: 'What is this persons role?',
             choices: ['Manager', 'Employee', 'Engingeeer', 'Intern'],
         },
-        {
+    ];
+ 
+function roleOption(answers)  {
+    const roleAnswer = answers.role
+    if (roleAnswer = "Manager") {
+        inquirer.prompt({
             type: 'input',
             name: 'officeNumber',
-            message: 'What is your Office Number?',
-            when: input.role === "Manager",
-        },
-        {
+            message: 'What is your Office Number?'
+        })
+    } else if (roleAnswer = "Engingeer") {
+        inquirer.prompt({
             type: 'input',
             name: 'github',
-            message: 'What is your Github user name?',
-            when: input.role === "Engineer",
-        },
-        {
+            message: 'What is your Github user name?'
+        })
+    } else if (roleAnswer = "Intern") {
+        inquirer.prompt({
             type: 'input',
             name: 'school',
-            message: 'What school do you attend?',
-            when: input.role === "Intern",
-        },
-    ]
-    return inquirer.prompt(questions);
+            message: 'What school do you attend?'
+        })
+    }
 }
-teamQuestions();
+
+inquirer
+    .prompt(questions)
+    .then(() => {
+        roleOption()
+    })
+
