@@ -53,13 +53,16 @@ function roleOption(answers)  {
     }
 }
 
-inquirer
-    .prompt(questions)
+const init= () => {
+    return inquirer.prompt(questions);
+    roleOption();
+}
+init()
     .then
     // .then(() => {
     //     roleOption()
     // })
-    fs.writeFile('index.html', data, (err) => {
+    fs.writeFile('./dist/index.html', data, (err) => {
         err ? console.log(err) : console.log('Team Profile Generated!')
     })
 

@@ -9,7 +9,7 @@ const managerAdd =
             <p>Id: ${questions.id}</p>
         </div>
         <div>
-            <p>Email: ${questions.email}</p>
+            <p>Email: <a href = "mailto:${questions.email}"></a>${questions.email}</p>
         </div>
         <div>
             <p>Office Number: ${questions.officeNumber}</p>
@@ -29,7 +29,7 @@ const engineerAdd =
             <p>Id: ${questions.id}</p>
         </div>
         <div>
-            <p>Email: ${questions.email}</p>
+            <p>Email: <a href = "mailto:${questions.email}"></a>${questions.email}</p>
         </div>
         <div>
             <p>Github: ${questions.github}</p>
@@ -48,7 +48,7 @@ const internAdd =
             <p>Id: ${questions.id}</p>
         </div>
         <div>
-            <p>Email: ${questions.email}</p>
+            <p>Email: <a href = "mailto:${questions.email}"></a>${questions.email}</p>
         </div>
         <div>
             <p>School: ${questions.school}</p>
