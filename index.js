@@ -2,7 +2,7 @@
 // will generate an HTML page with employees information
 // required to use classes. 
 // use bootstrap to make cards for the HTML page. make emails in info hyperlinks. also Gitub page link
-// test classes you creat for each employee type.
+// test classes you create for each employee type.
 const fs = require('fs');
 const inquirer = require('inquirer');
 
@@ -26,7 +26,7 @@ const inquirer = require('inquirer');
             type: 'list',
             name: 'role',
             message: 'What is this persons role?',
-            choices: ['Manager', 'Employee', 'Engingeeer', 'Intern'],
+            choices: ['Manager', 'Engingeeer', 'Intern'],
         },
     ];
  
@@ -60,6 +60,6 @@ inquirer
     //     roleOption()
     // })
     fs.writeFile('index.html', data, (err) => {
-        if (err) return console.log(err);
+        err ? console.log(err) : console.log('Team Profile Generated!')
     })
 
