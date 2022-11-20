@@ -6,8 +6,8 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-inquirer
-    .prompt([
+function teamQuestions() {
+    const questions = [
         {
             type: 'input',
             name: 'name',
@@ -28,5 +28,26 @@ inquirer
             name: 'role',
             message: 'What is this persons role?',
             choices: ['Manager', 'Employee', 'Engingeeer', 'Intern'],
-        }
-    ])
+        },
+        {
+            type: 'input',
+            name: 'officeNumber',
+            message: 'What is your Office Number?',
+            when: input.role === "Manager",
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: 'What is your Github user name?',
+            when: input.role === "Engineer",
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: 'What school do you attend?',
+            when: input.role === "Intern",
+        },
+    ]
+    return inquirer.prompt(questions);
+}
+teamQuestions();
