@@ -29,40 +29,42 @@ const inquirer = require('inquirer');
             choices: ['Manager', 'Engingeeer', 'Intern'],
         },
     ];
- 
-function roleOption(answers)  {
-    const roleAnswer = answers.role
-    if (roleAnswer = "Manager") {
-        inquirer.prompt({
-            type: 'input',
-            name: 'officeNumber',
-            message: 'What is your Office Number?'
-        })
-    } else if (roleAnswer = "Engingeer") {
-        inquirer.prompt({
-            type: 'input',
-            name: 'github',
-            message: 'What is your Github user name?'
-        })
-    } else if (roleAnswer = "Intern") {
-        inquirer.prompt({
-            type: 'input',
-            name: 'school',
-            message: 'What school do you attend?'
-        })
-    }
-}
+ inquirer.prompt(questions)
 
-const init= () => {
-    return inquirer.prompt(questions);
-    roleOption();
-}
-init()
+
     .then
-    // .then(() => {
-    //     roleOption()
-    // })
-    fs.writeFile('./dist/index.html', data, (err) => {
-        err ? console.log(err) : console.log('Team Profile Generated!')
-    })
+        switch (questions) {
+            case questions.role === "Manager":
+                inquirer.prompt({
+                    type: 'input',
+                    name: 'officeNumber',
+                    message: 'What is your Office Number?'
+                });
+                break;
+            case questions.role === "Engineer":
+                inquirer.prompt({
+                    type: 'input',
+                    name: 'github',
+                    message: 'What is your Github user name?'
+                });
+                break;
+            case questions.role === "Intern":
+                inquirer.prompt({
+                    type: 'input',
+                    name: 'school',
+                    message: 'What school do you attend?'
+                });
+                break;
+                }
+            
+        // .then(inquirer.prompt({
+        //     type: 'input',
+        //     name: 'addmore',
+        //     message: 'Do you want to add another Employee?',
+        // }))
+
+
+//     fs.writeFile('./dist/index.html', data, (err) => {
+//         err ? console.log(err) : console.log('Team Profile Generated!')
+//     })
 
