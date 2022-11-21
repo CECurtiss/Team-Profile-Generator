@@ -6,7 +6,30 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
- const questions = [
+const managerQuestions = [
+        {
+            type: 'input',
+            name: 'name',
+            message: 'Manager Name:',
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: 'Manager ID:',
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Manager Email:',
+        },
+        {
+            type: 'input',
+            name: 'officeNumber',
+            message: 'What is the Manager"s Office Number?'
+        },
+    ];
+
+ const engineerQuestions = [
         {
             type: 'input',
             name: 'name',
@@ -23,48 +46,54 @@ const inquirer = require('inquirer');
             message: 'Email:',
         },
         {
-            type: 'list',
-            name: 'role',
-            message: 'What is this persons role?',
-            choices: ['Manager', 'Engingeeer', 'Intern'],
+            type: 'input',
+            name: 'github',
+            message: 'What is your Github user name?',
         },
     ];
- inquirer.prompt(questions)
+
+const internQuestions = [
+        {
+            type: 'input',
+            name: 'name',
+            message: 'Name:',
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: 'ID:',
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Email:',
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: 'What school do you attend?',
+        },
+    ];
+
+inquirer.prompt(managerQuestions)
+
+          
+        .then(inquirer.prompt(
+            {
+                type: 'confirm',
+                name: 'addmore',
+                message: 'Do you want to add another Employee?',
+            },
+            {
+                type: 'list',
+                name: 'employeeType',
+                message: 'What type of employee would you like to add to your team?',
+                choices: [ 'Engineer', 'Employee' ],
+            }
+            ))
 
 
-    .then
-        switch (questions) {
-            case questions.role === "Manager":
-                inquirer.prompt({
-                    type: 'input',
-                    name: 'officeNumber',
-                    message: 'What is your Office Number?'
-                });
-                break;
-            case questions.role === "Engineer":
-                inquirer.prompt({
-                    type: 'input',
-                    name: 'github',
-                    message: 'What is your Github user name?'
-                });
-                break;
-            case questions.role === "Intern":
-                inquirer.prompt({
-                    type: 'input',
-                    name: 'school',
-                    message: 'What school do you attend?'
-                });
-                break;
-                }
-            
-        // .then(inquirer.prompt({
-        //     type: 'input',
-        //     name: 'addmore',
-        //     message: 'Do you want to add another Employee?',
-        // }))
-
-
-//     fs.writeFile('./dist/index.html', data, (err) => {
-//         err ? console.log(err) : console.log('Team Profile Generated!')
-//     })
+    fs.writeFile('./dist/index.html', data, (err) => {
+        err ? console.log(err) : console.log('Team Profile Generated!')
+    })
 
