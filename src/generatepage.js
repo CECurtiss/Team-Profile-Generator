@@ -1,4 +1,4 @@
-const managerAdd = 
+function managerAdd() {
 `<div class="card col-sm">
     <div class="card-header bg-primary text-white">
         <h3>${questions.name}</h3>
@@ -16,9 +16,9 @@ const managerAdd =
         </div>
     </div>
 </div>`
-;
+};
 
-const engineerAdd = 
+function engineerAdd() {
 `<div class="card col-sm">
     <div class="card-header bg-primary text-white">
         <h3>${questions.name}</h3>
@@ -36,8 +36,9 @@ const engineerAdd =
         </div>
     </div>
 </div>`
+};
 
-const internAdd =
+function internAdd() {
 `<div class="card col-sm">
     <div class="card-header bg-primary text-white">
         <h3>${questions.name}</h3>
@@ -55,8 +56,9 @@ const internAdd =
         </div>
     </div>
 </div>`
+};
 
-const htmlAdd =
+function htmlAdd() {
 `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,5 +86,5 @@ const htmlAdd =
     </div>
 </body>
 </html>`
-
+};
 module.exports = { managerAdd, engineerAdd, internAdd, htmlAdd }
