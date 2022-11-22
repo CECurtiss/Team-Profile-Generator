@@ -1,18 +1,18 @@
 function managerAdd() {
 `<div class="card col-sm">
     <div class="card-header bg-primary text-white">
-        <h3>${questions.name}</h3>
+        <h3>${managerQuestions.name}</h3>
         <h3>Manager</h3>
     </div>
     <div class="card-body">
         <div>
-            <p>Id: ${questions.id}</p>
+            <p>Id: ${managerQuestions.id}</p>
         </div>
         <div>
-            <p>Email: <a href = "mailto:${questions.email}"></a>${questions.email}</p>
+            <p>Email: <a href = "mailto:${managerQuestions.email}"></a>${managerQuestions.email}</p>
         </div>
         <div>
-            <p>Office Number: ${questions.officeNumber}</p>
+            <p>Office Number: ${managerQuestions.officeNumber}</p>
         </div>
     </div>
 </div>`
@@ -21,18 +21,18 @@ function managerAdd() {
 function engineerAdd() {
 `<div class="card col-sm">
     <div class="card-header bg-primary text-white">
-        <h3>${questions.name}</h3>
+        <h3>${engineerQuestions.name}</h3>
         <h3>Engineer</h3>
     </div>
     <div class="card-body">
         <div>
-            <p>Id: ${questions.id}</p>
+            <p>Id: ${engineerQuestions.id}</p>
         </div>
         <div>
-            <p>Email: <a href = "mailto:${questions.email}"></a>${questions.email}</p>
+            <p>Email: <a href = "mailto:${engineerQuestions.email}"></a>${engineerQuestions.email}</p>
         </div>
         <div>
-            <p>Github: ${questions.github}</p>
+            <p>Github: ${engineerQuestions.github}</p>
         </div>
     </div>
 </div>`
@@ -41,18 +41,18 @@ function engineerAdd() {
 function internAdd() {
 `<div class="card col-sm">
     <div class="card-header bg-primary text-white">
-        <h3>${questions.name}</h3>
+        <h3>${internQuestions.name}</h3>
         <h3>Intern</h3>
     </div>
     <div class="card-body">
         <div>
-            <p>Id: ${questions.id}</p>
+            <p>Id: ${internQuestions.id}</p>
         </div>
         <div>
-            <p>Email: <a href = "mailto:${questions.email}"></a>${questions.email}</p>
+            <p>Email: <a href = "mailto:${internQuestions.email}"></a>${internQuestions.email}</p>
         </div>
         <div>
-            <p>School: ${questions.school}</p>
+            <p>School: ${internQuestions.school}</p>
         </div>
     </div>
 </div>`
@@ -87,4 +87,10 @@ function htmlAdd() {
 </body>
 </html>`
 };
-module.exports = { managerAdd, engineerAdd, internAdd, htmlAdd }
+
+function generatePage(data) {
+    
+
+}
+
+module.exports = { generatePage }
