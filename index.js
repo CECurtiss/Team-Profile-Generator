@@ -82,13 +82,16 @@ const internQuestions = [
   },
 ];
 
-const employeeQuestions = [
+const employeeMore = [
   {
     type: "confirm",
     name: "addmore",
     message: "Do you want to add another Employee?",
     default: false,
-  },
+  }
+];
+
+const employeeType = [
   {
     type: "list",
     name: "employeeType",
@@ -96,7 +99,8 @@ const employeeQuestions = [
     choices: ["Engineer", "Intern"],
   },
 ];
-function init() {
+
+function managerAdd() {
   inquirer.prompt(managerQuestions).then((managerAnswers) => {
     const newManager = new Manager(
       managerAnswers.name,
@@ -105,40 +109,48 @@ function init() {
       managerAnswers.officeNumber
     );
     teamArray.push(newManager);
-    inquirer.prompt(employeeQuestions).then((employeeAnswers) => {
-      if (employeeAnswers.addmore === true) {
-      } else {
-        return;
-      }
-      if (employeeAnswers.employeeType === "Engineer") {
-        inquirer.prompt(engineerQuestions).then((engineerAnswers) => {
-          const newEngineer = new Engineer(
-            engineerAnswers.name,
-            engineerAnswers.id,
-            engineerAnswers.email,
-            engineerAnswers.github
-          );
-          teamArray.push(newEngineer);
-          return inquirer.prompt(employeeQuestions);
-        });
-      } else {
-        inquirer.prompt(internQuestions).then((internAnswers) => {
-          const newIntern = new Intern(
-            internAnswers.name,
-            internAnswers.id,
-            internAnswers.email,
-            internAnswers.school
-          );
-          teamArray.push(newIntern);
-          return inquirer.prompt(employeeQuestions);
-        });
-      }
-    });
+    return employeeSelect();
   });
 }
-//   fs.writeFile("./dist/index.html", data, (err) => {
-//     err ? console.log(err) : console.log("Team Profile Generated!");
-//   });
-//
 
-init();
+function employeeAdd() {
+  inquirer.prompt(employeeMore).then((employeeAnswers) => {
+    if (employeeAnswers.addmore === true) {
+        return employeeSelect()
+    } else {
+      return writeFile();
+    }})};
+function employeeSelect () {
+    inquirer.prompt(employeeType).then((employeeResponse) => { 
+    if (employeeResponse.employeeType === "Engineer") {
+      inquirer.prompt(engineerQuestions).then((engineerAnswers) => {
+        const newEngineer = new Engineer(
+          engineerAnswers.name,
+          engineerAnswers.id,
+          engineerAnswers.email,
+          engineerAnswers.github
+        );
+        teamArray.push(newEngineer);
+        return employeeAdd();
+      });
+    } else {
+      inquirer.prompt(internQuestions).then((internAnswers) => {
+        const newIntern = new Intern(
+          internAnswers.name,
+          internAnswers.id,
+          internAnswers.email,
+          internAnswers.school
+        );
+        teamArray.push(newIntern);
+        return employeeAdd();
+      });
+    }
+  });
+}
+
+function writeFile() {
+  fs.writeFile("./dist/index.html", teamArray, (err) => {
+    err ? console.log(err) : console.log("Team Profile Generated!");
+  });
+}
+managerAdd();
