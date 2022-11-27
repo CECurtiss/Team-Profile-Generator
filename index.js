@@ -9,6 +9,7 @@ const generatePage = require("./src/generatepage");
 const Engineer = require("./lib/Engineer");
 const Manager = require("./lib/Manager");
 const Intern = require("./lib/Intern");
+const Employee = require("./lib/Employee");
 
 const teamArray = [];
 
@@ -103,40 +104,41 @@ function init() {
       managerAnswers.email,
       managerAnswers.officeNumber
     );
-    const newEngineer = new Engineer(
-      engineerAnswers.name,
-      engineerAnswers.id,
-      engineerAnswers.email,
-      engineerAnswers.github
-    );
-    const newIntern = new Intern(
-      internAnswers.name,
-      internAnswers.id,
-      internAnswers.email,
-      internAnswers.school
-    );
     teamArray.push(newManager);
     inquirer.prompt(employeeQuestions).then((employeeAnswers) => {
-      if (employeeAnswers.employeeType === "Engineer") {
-        inquirer
-          .prompt(engineerQuestions)
-          .then((engineerAnswers) => teamArray.push(newEngineer));
-        return;
+      if (employeeAnswers.addmore === true) {
       } else {
-        inquirer
-          .prompt(internQuestions)
-          .then((internAnswers) => teamArray.push(newIntern));
         return;
       }
+      if (employeeAnswers.employeeType === "Engineer") {
+        inquirer.prompt(engineerQuestions).then((engineerAnswers) => {
+          const newEngineer = new Engineer(
+            engineerAnswers.name,
+            engineerAnswers.id,
+            engineerAnswers.email,
+            engineerAnswers.github
+          );
+          teamArray.push(newEngineer);
+          return inquirer.prompt(employeeQuestions);
+        });
+      } else {
+        inquirer.prompt(internQuestions).then((internAnswers) => {
+          const newIntern = new Intern(
+            internAnswers.name,
+            internAnswers.id,
+            internAnswers.email,
+            internAnswers.school
+          );
+          teamArray.push(newIntern);
+          return inquirer.prompt(employeeQuestions);
+        });
+      }
     });
-    if (employeeAnswers.addmore === true) {
-    } else {
-      break;
-    }
-  });
-
-  fs.writeFile("./dist/index.html", data, (err) => {
-    err ? console.log(err) : console.log("Team Profile Generated!");
   });
 }
-// init();
+//   fs.writeFile("./dist/index.html", data, (err) => {
+//     err ? console.log(err) : console.log("Team Profile Generated!");
+//   });
+//
+
+init();
