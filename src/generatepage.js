@@ -76,7 +76,7 @@ function htmlAdd() {
 
     <div class="container">
         <div class="row">
-            <!-- add class cards here -->
+            ${employeeCards}
 
 
             
@@ -88,8 +88,11 @@ function htmlAdd() {
 </html>`
 };
 
-function generatePage(data) {
-    
+function generatePage(teamArray) {
+    for (i=0; i<teamArray.length; i++) {
+        if ()
+    }
+
 
 }
 
