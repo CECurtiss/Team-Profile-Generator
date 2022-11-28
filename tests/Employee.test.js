@@ -28,3 +28,11 @@ test("employee sets email correctly", () => {
     expect(object.email).toBe(email)
 })
 
+test("employee returns role as 'employee'", () => {
+    const name = "Joe"
+    const id = "1234"
+    const email = "billdozer@arlen.com"
+    const roleRequest = "Employee"
+    const object = new Employee(name, id, email)
+    expect(object.getRole()).toBe(roleRequest)
+})

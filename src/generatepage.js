@@ -9,7 +9,7 @@ return `<div class="card col-sm">
             <p>Id: ${managerQuestions.id}</p>
         </div>
         <div>
-            <p>Email: <a href = "mailto:${managerQuestions.email}"></a>${managerQuestions.email}</p>
+            <p>Email: <a href = "mailto:${managerQuestions.email}">${managerQuestions.email}</a></p>
         </div>
         <div>
             <p>Office Number: ${managerQuestions.officeNumber}</p>
@@ -29,10 +29,10 @@ return `<div class="card col-sm">
             <p>Id: ${engineerQuestions.id}</p>
         </div>
         <div>
-            <p>Email: <a href = "mailto:${engineerQuestions.email}"></a>${engineerQuestions.email}</p>
+            <p>Email: <a href = "mailto:${engineerQuestions.email}">${engineerQuestions.email}</a></p>
         </div>
         <div>
-            <p>Github: ${engineerQuestions.github}</p>
+            <p>Github: <a href= "https://github.com/${engineerQuestions.github}">${engineerQuestions.github}</a></p>
         </div>
     </div>
 </div>`
@@ -49,7 +49,7 @@ return `<div class="card col-sm">
             <p>Id: ${internQuestions.id}</p>
         </div>
         <div>
-            <p>Email: <a href = "mailto:${internQuestions.email}"></a>${internQuestions.email}</p>
+            <p>Email: <a href = "mailto:${internQuestions.email}">${internQuestions.email}</a></p>
         </div>
         <div>
             <p>School: ${internQuestions.school}</p>
