@@ -58,48 +58,6 @@ return `<div class="card col-sm">
 </div>`
 };
 
-function htmlAdd(teamArray) {
-    return `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <link rel = "stylesheet" href = "style.css">
-    <title>Team Page</title>
-</head>
-<body>
-    <header class="jumbotron bg-danger text-white text-center">
-        <h1>My Team</h1>
-    </header>
-
-    <div class="container">
-        <div class="row">
-             ${managerAdd(teamArray.filter(officeNumber))}
-             ${internAdd(teamArray.filter(school))}
-            ${engineerAdd(teamArray.filter(github))}
-
-   
-        </div>
-    </div>
-</body>
-</html>`
-};
-
-function generateCards(teamArray) {
-    // managerCard = teamArray.filter(officeNumber)
-    // engineerCardArray = teamArray.filter(github)
-    // internCardArray = teamArray.filter(school)
-
-    // for (i=0; i<engineerCardArray.length; i++) {
-    //     if ()
-    // }
-
-
-}
-
-
 module.exports =  teamArray => {   
     return `<!DOCTYPE html>
 <html lang="en">

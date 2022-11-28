@@ -1,8 +1,3 @@
-// prompt for information about employees
-// will generate an HTML page with employees information
-// required to use classes.
-// use bootstrap to make cards for the HTML page. make emails in info hyperlinks. also Gitub page link
-// test classes you create for each employee type.
 const fs = require("fs");
 const inquirer = require("inquirer");
 const generatePage = require("./src/generatepage.js");
