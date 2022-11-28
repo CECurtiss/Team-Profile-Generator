@@ -1,7 +1,30 @@
-const Employee = require('Employee');
-const { it } = require('node:test');
-const { describe } = require('yargs');
+const Employee = require('../lib/Employee');
 
-describe('WriteEmployee', () => {
-    it('')
+
+test("employee class creates objects", ()=> {
+    const object = new Employee()
+    expect(typeOf(object).toBe("object"))
+
 })
+
+test("employee sets name correctly", () => {
+    const name = "Joe"
+    const object = new Employee(name)
+    expect(object.name).toBe(name)
+})
+
+test("employee sets ID correctly", () => {
+    const name = "Joe"
+    const id = "1234"
+    const object = new Employee(name, id)
+    expect(object.id).toBe(id)
+})
+
+test("employee sets email correctly", () => {
+    const name = "Joe"
+    const id = "1234"
+    const email = "billdozer@arlen.com"
+    const object = new Employee(name, id, email)
+    expect(object.email).toBe(email)
+})
+

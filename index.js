@@ -5,11 +5,10 @@
 // test classes you create for each employee type.
 const fs = require("fs");
 const inquirer = require("inquirer");
-const generatePage = require("./src/generatepage");
+const generatePage = require("./src/generatepage.js");
 const Engineer = require("./lib/Engineer");
 const Manager = require("./lib/Manager");
 const Intern = require("./lib/Intern");
-const Employee = require("./lib/Employee");
 
 const teamArray = [];
 
@@ -88,7 +87,7 @@ const employeeMore = [
     name: "addmore",
     message: "Do you want to add another Employee?",
     default: false,
-  }
+  },
 ];
 
 const employeeType = [
@@ -116,12 +115,14 @@ function managerAdd() {
 function employeeAdd() {
   inquirer.prompt(employeeMore).then((employeeAnswers) => {
     if (employeeAnswers.addmore === true) {
-        return employeeSelect()
+      return employeeSelect();
     } else {
       return writeFile();
-    }})};
-function employeeSelect () {
-    inquirer.prompt(employeeType).then((employeeResponse) => { 
+    }
+  });
+}
+function employeeSelect() {
+  inquirer.prompt(employeeType).then((employeeResponse) => {
     if (employeeResponse.employeeType === "Engineer") {
       inquirer.prompt(engineerQuestions).then((engineerAnswers) => {
         const newEngineer = new Engineer(
@@ -149,7 +150,7 @@ function employeeSelect () {
 }
 
 function writeFile() {
-  fs.writeFile("./dist/index.html", teamArray, (err) => {
+  fs.writeFile("./dist/index.html", generatePage(teamArray), (err) => {
     err ? console.log(err) : console.log("Team Profile Generated!");
   });
 }

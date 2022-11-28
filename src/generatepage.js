@@ -1,5 +1,5 @@
-function managerAdd() {
-`<div class="card col-sm">
+function managerAdd(managerQuestions) {
+return `<div class="card col-sm">
     <div class="card-header bg-primary text-white">
         <h3>${managerQuestions.name}</h3>
         <h3>Manager</h3>
@@ -18,8 +18,8 @@ function managerAdd() {
 </div>`
 };
 
-function engineerAdd() {
-`<div class="card col-sm">
+function engineerAdd(engineerQuestions) {
+return `<div class="card col-sm">
     <div class="card-header bg-primary text-white">
         <h3>${engineerQuestions.name}</h3>
         <h3>Engineer</h3>
@@ -38,8 +38,8 @@ function engineerAdd() {
 </div>`
 };
 
-function internAdd() {
-`<div class="card col-sm">
+function internAdd(internQuestions) {
+return `<div class="card col-sm">
     <div class="card-header bg-primary text-white">
         <h3>${internQuestions.name}</h3>
         <h3>Intern</h3>
@@ -58,8 +58,8 @@ function internAdd() {
 </div>`
 };
 
-function htmlAdd() {
-`<!DOCTYPE html>
+function htmlAdd(teamArray) {
+    return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -76,10 +76,9 @@ function htmlAdd() {
 
     <div class="container">
         <div class="row">
-            ${employeeCards}
-
-
-            
+             ${managerAdd(teamArray.filter(officeNumber))}
+             ${internAdd(teamArray.filter(school))}
+            ${engineerAdd(teamArray.filter(github))}
 
    
         </div>
@@ -88,12 +87,46 @@ function htmlAdd() {
 </html>`
 };
 
-function generatePage(teamArray) {
-    for (i=0; i<teamArray.length; i++) {
-        if ()
-    }
+function generateCards(teamArray) {
+    // managerCard = teamArray.filter(officeNumber)
+    // engineerCardArray = teamArray.filter(github)
+    // internCardArray = teamArray.filter(school)
+
+    // for (i=0; i<engineerCardArray.length; i++) {
+    //     if ()
+    // }
 
 
 }
 
-module.exports = { generatePage }
+
+module.exports =  teamArray => {   
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel = "stylesheet" href = "style.css">
+    <title>Team Page</title>
+</head>
+<body>
+    <header class="jumbotron bg-danger text-white text-center">
+        <h1>My Team</h1>
+    </header>
+
+    <div class="container">
+        <div class="row">
+             ${teamArray.filter(employee => employee.getRole() === "Manager").map(manager => managerAdd(manager))}
+             ${teamArray.filter(employee => employee.getRole() === "Engineer").map(manager => engineerAdd(manager))}
+            ${teamArray.filter(employee => employee.getRole() === "Intern").map(manager => internAdd(manager))}
+
+   
+        </div>
+    </div>
+</body>
+</html>`
+};
+
+
