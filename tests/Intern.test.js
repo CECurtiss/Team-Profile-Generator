@@ -14,7 +14,7 @@ test("employee returns role as 'intern'", () => {
     const id = "1234"
     const email = "billdozer@arlen.com"
     const school = "Tom Landry U"
-    const roleRequest = "Engineer"
+    const roleRequest = "Intern"
     const object = new Intern(name, id, email, school)
     expect(object.getRole()).toBe(roleRequest)
 })

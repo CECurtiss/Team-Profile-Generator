@@ -3,7 +3,7 @@ const Employee = require('../lib/Employee');
 
 test("employee class creates objects", ()=> {
     const object = new Employee()
-    expect(typeOf(object).toBe("object"))
+    expect(typeof(object)).toBe("object")
 
 })
 
